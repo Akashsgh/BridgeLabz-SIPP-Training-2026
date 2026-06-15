@@ -1,3 +1,4 @@
+package core_java_practice.gcr_codebase.methodLabPractice;
 import java.util.Scanner;
 
 public class TrigonometricFunctionsCalculator {
