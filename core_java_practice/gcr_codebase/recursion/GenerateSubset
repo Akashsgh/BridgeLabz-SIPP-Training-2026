@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class GenerateSubset {
+
+    static void generateSubsets(int[] arr, int index, List<Integer> subset) {
+
+        if (index == arr.length) {
+            System.out.println(subset);
+            return;
+        }
+
+        
+        subset.add(arr[index]);
+        generateSubsets(arr, index + 1, subset);
+
+        // Exclude current element
+        subset.remove(subset.size() - 1);
+        generateSubsets(arr, index + 1, subset);
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2};
+        generateSubsets(arr, 0, new ArrayList<>());
+    }
+}
