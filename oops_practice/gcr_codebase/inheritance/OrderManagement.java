@@ -4,29 +4,31 @@ public class OrderManagement {
 
     public static void main(String[] args) {
 
-        Order order =
-                new Order(101, "24-06-2026");
+        Order order = new Order(101, "24-06-2026");
 
-        ShippedOrder shippedOrder =
-                new ShippedOrder(
-                        102,
-                        "25-06-2026",
-                        "TRK123");
+        ShippedOrder shippedOrder = new ShippedOrder(
+                102,
+                "25-06-2026",
+                "TRK123");
 
-        DeliveredOrder deliveredOrder =
-                new DeliveredOrder(
-                        103,
-                        "26-06-2026",
-                        "TRK456",
-                        "27-06-2026");
+        DeliveredOrder deliveredOrder = new DeliveredOrder(
+                103,
+                "26-06-2026",
+                "TRK456",
+                "27-06-2026");
 
-        System.out.println(order.getOrderStatus());
-        System.out.println(shippedOrder.getOrderStatus());
-        System.out.println(deliveredOrder.getOrderStatus());
+        order.displayDetails();
+        System.out.println();
+
+        shippedOrder.displayDetails();
+        System.out.println();
+
+        deliveredOrder.displayDetails();
     }
 }
 
 class Order {
+
     protected int orderId;
     protected String orderDate;
 
@@ -38,9 +40,16 @@ class Order {
     public String getOrderStatus() {
         return "Order Placed";
     }
+
+    public void displayDetails() {
+        System.out.println("Order ID     : " + orderId);
+        System.out.println("Order Date   : " + orderDate);
+        System.out.println("Status       : " + getOrderStatus());
+    }
 }
 
 class ShippedOrder extends Order {
+
     protected String trackingNumber;
 
     public ShippedOrder(int orderId,
@@ -55,9 +64,16 @@ class ShippedOrder extends Order {
     public String getOrderStatus() {
         return "Order Shipped";
     }
+
+    @Override
+    public void displayDetails() {
+        super.displayDetails();
+        System.out.println("Tracking No. : " + trackingNumber);
+    }
 }
 
 class DeliveredOrder extends ShippedOrder {
+
     private String deliveryDate;
 
     public DeliveredOrder(int orderId,
@@ -72,5 +88,11 @@ class DeliveredOrder extends ShippedOrder {
     @Override
     public String getOrderStatus() {
         return "Order Delivered";
+    }
+
+    @Override
+    public void displayDetails() {
+        super.displayDetails();
+        System.out.println("Delivery Date: " + deliveryDate);
     }
 }
