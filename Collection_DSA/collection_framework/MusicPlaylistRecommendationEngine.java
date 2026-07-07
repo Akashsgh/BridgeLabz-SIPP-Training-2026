@@ -1,4 +1,4 @@
-package oops_practice.gcr_codebase.collection_framework;
+package Collection_DSA.collection_framework;
 
 import java.util.LinkedList;
 
