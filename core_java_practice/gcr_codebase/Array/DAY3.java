@@ -1,4 +1,6 @@
-public class ArraysPractice {
+import java.util.Arrays;
+
+public class DAY3 {
 
     public static void main(String[] args) {
 
